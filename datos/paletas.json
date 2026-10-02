@@ -18,7 +18,8 @@
       "#6a2114",
       "#842d17"
     ],
-    "suelo": "#1f1411"
+    "suelo": "#1f1411",
+    "dorso": "#ab1918"
   },
   "LOTHRIM": {
     "colores": {
@@ -44,7 +45,8 @@
     "suelo": "#16240f",
     "soloPiezas": [
       "P"
-    ]
+    ],
+    "dorso": "#2d572c"
   },
   "HOPLITAS": {
     "colores": {
@@ -66,7 +68,8 @@
       "#433426",
       "#52402d"
     ],
-    "suelo": "#1b140d"
+    "suelo": "#1b140d",
+    "dorso": "#624a2e"
   },
   "NEUTRAL": {
     "colores": {

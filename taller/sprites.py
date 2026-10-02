@@ -163,6 +163,10 @@ PIEZAS = {
 }
 
 
+# Card backs: faction -> emblem map
+DORSOS = {"DRACONIENS": "volcan", "LOTHRIM": "arbol", "HOPLITAS": "casco"}
+
+
 def filas(nombre: str) -> list[str]:
     mitad = MAPAS[nombre]
     ancho = max(len(f) for f in mitad)

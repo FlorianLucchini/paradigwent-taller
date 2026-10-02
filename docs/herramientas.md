@@ -26,7 +26,8 @@ descripción en inglés de cada carta (`datos/prompts.json`) y:
    de `soloPiezas` (como el rosa de la flor Lothrim) quedan afuera.
 3. Arma `pruebas/<lote>/index.html` para comparar y elegir.
 
-Si se corta, al volver a correrlo sigue desde donde quedó. Las elegidas se anotan en
+Si se corta, al volver a correrlo sigue desde donde quedó. Para elegir, `taller.eleccion`
+arma una página con las 4 opciones de cada carta. Las elegidas se anotan en
 `pruebas/<lote>/elegidas.json` (`{"saxardent": 3, ...}`) y `taller.promover` las copia a
 `assets/ilustraciones/`.
 

@@ -5,3 +5,6 @@ __pycache__/
 
 # Raw Stable Diffusion output (512 px): only the pixelated version is kept
 pruebas/*/crudas/
+
+# Self-contained selection pages (every image embedded)
+pruebas/*/eleccion.html

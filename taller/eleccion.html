@@ -1,0 +1,230 @@
+<title>Elección de ilustraciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Alegreya:ital,wght@0,400;0,600;1,400&family=Silkscreen&display=swap">
+<style>
+/* Layout: a sorting table. Each card is one row: its identity on the left, four candidate tiles on the right; a sticky tally on top. */
+:root {
+  color-scheme: dark;
+  --mesa: #16120e;
+  --panel: #1f1914;
+  --borde: #2f261d;
+  --tinta-clara: #ece3d2;
+  --tinta-suave: #b3a690;
+  --laton: #c9a24a;
+  --DRACONIENS: #c4231f;
+  --LOTHRIM: #3f7a3d;
+  --HOPLITAS: #8a6740;
+  --f-display: "IM Fell English SC", "Iowan Old Style", Georgia, serif;
+  --f-texto: "Alegreya", "Iowan Old Style", Georgia, serif;
+  --f-pixel: "Silkscreen", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body { background: var(--mesa); color: var(--tinta-clara); font-family: var(--f-texto); font-size: 16px; line-height: 1.45; }
+.envoltura { max-width: 1120px; margin: 0 auto; padding-inline: 18px; padding-block: 32px 64px; display: grid; gap: 20px; }
+header { display: grid; gap: 8px; max-width: 70ch; }
+.ceja { font-family: var(--f-pixel); font-size: 12px; letter-spacing: .12em; color: var(--laton); text-transform: uppercase; }
+h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(34px, 5.5vw, 52px); line-height: 1.02; margin: 0; text-wrap: balance; }
+header p { margin: 0; color: var(--tinta-suave); }
+
+.barra { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--mesa) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--borde); padding-block: 12px; display: grid; gap: 10px; }
+.cuenta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; font-family: var(--f-pixel); font-size: 12px; letter-spacing: .05em; color: var(--tinta-suave); font-variant-numeric: tabular-nums; }
+.cuenta .total { font-size: 15px; color: var(--tinta-clara); }
+.cuenta .total b { color: var(--laton); font-weight: 400; }
+.medidor { height: 6px; background: var(--borde); border-radius: 3px; overflow: hidden; }
+.medidor span { display: block; height: 100%; background: var(--laton); width: 0; transition: width .3s ease; }
+.controles { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip { font-family: var(--f-pixel); font-size: 11px; letter-spacing: .05em; color: var(--tinta-clara); background: var(--panel); border: 1px solid var(--borde); padding: 6px 10px; border-radius: 4px; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--laton); color: var(--mesa); border-color: var(--laton); }
+.chip:focus-visible, .opcion:focus-visible { outline: 2px solid var(--laton); outline-offset: 2px; }
+.estado { margin-left: auto; font-family: var(--f-pixel); font-size: 11px; color: var(--tinta-suave); }
+.estado.ok { color: #9cc65a; }
+.estado.aviso { color: #f0a050; }
+
+.lista { display: grid; gap: 12px; }
+.carta { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(0, 3fr); gap: 16px; align-items: center; background: var(--panel); border: 1px solid var(--borde); border-left: 4px solid var(--fac); border-radius: 6px; padding: 12px 14px; }
+@media (max-width: 720px) { .carta { grid-template-columns: minmax(0, 1fr); } }
+.info { display: grid; gap: 4px; }
+.info h2 { font-family: var(--f-display); font-weight: 400; font-size: 24px; line-height: 1.05; margin: 0; }
+.info p { margin: 0; font-size: 14px; color: var(--tinta-suave); }
+.datos { display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--f-pixel); font-size: 10px; letter-spacing: .05em; color: var(--tinta-suave); }
+.datos span { border: 1px solid var(--borde); padding: 1px 6px; border-radius: 3px; }
+.datos .fac { background: var(--fac); color: var(--tinta-clara); border-color: var(--fac); }
+.opciones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.opcion { all: unset; cursor: pointer; display: grid; gap: 4px; justify-items: center; }
+.opcion img { width: 100%; max-width: 132px; aspect-ratio: 1; image-rendering: pixelated; image-rendering: crisp-edges; border: 3px solid transparent; border-radius: 4px; background: var(--borde); }
+.opcion img.cruda { image-rendering: auto; border-width: 1px; opacity: .9; }
+.opcion:hover img:first-child { border-color: var(--tinta-suave); }
+.opcion[aria-pressed="true"] img:first-child { border-color: var(--laton); }
+.opcion small { font-family: var(--f-pixel); font-size: 10px; color: var(--tinta-suave); }
+.opcion[aria-pressed="true"] small { color: var(--laton); }
+.vacio { color: var(--tinta-suave); padding: 24px 0; }
+
+.respaldo { display: grid; gap: 6px; }
+.respaldo summary { cursor: pointer; font-family: var(--f-pixel); font-size: 11px; color: var(--tinta-suave); }
+.respaldo textarea { width: 100%; min-height: 90px; background: var(--panel); color: var(--tinta-clara); border: 1px solid var(--borde); border-radius: 4px; font: 12px/1.4 monospace; padding: 8px; }
+@media (prefers-reduced-motion: reduce) { .medidor span { transition: none; } }
+</style>
+
+<div class="envoltura">
+  <header>
+    <span class="ceja">Paradigwent · lote __LOTE__</span>
+    <h1>Elegí las ilustraciones</h1>
+    <p>Cuatro opciones por carta, ya en 48 × 48 con la paleta de su facción. Tocá la que va al juego; tocarla de nuevo la desmarca. Las elecciones se guardan para todos los que abren esta página.</p>
+  </header>
+
+  <div class="barra">
+    <div class="cuenta" id="cuenta"></div>
+    <div class="medidor" aria-hidden="true"><span id="medidor"></span></div>
+    <div class="controles">
+      <button class="chip" type="button" data-filtro="todas" aria-pressed="true">Todas</button>
+      <button class="chip" type="button" data-filtro="DRACONIENS" aria-pressed="false">Draconiens</button>
+      <button class="chip" type="button" data-filtro="LOTHRIM" aria-pressed="false">Lothrim</button>
+      <button class="chip" type="button" data-filtro="HOPLITAS" aria-pressed="false">Hoplitas</button>
+      <button class="chip" type="button" data-filtro="pendientes" aria-pressed="false">Sin elegir</button>
+      <button class="chip" type="button" id="crudas" aria-pressed="false">Ver originales</button>
+      <span class="estado" id="estado" role="status">Conectando…</span>
+    </div>
+  </div>
+
+  <div class="lista" id="lista"></div>
+
+  <details class="respaldo">
+    <summary>Elecciones en texto (elegidas.json)</summary>
+    <textarea id="json" readonly aria-label="Elecciones en formato JSON"></textarea>
+  </details>
+</div>
+
+<script>
+const CARTAS = __CARTAS__;
+const NOMBRES = { DRACONIENS: 'Draconiens', LOTHRIM: 'Lothrim', HOPLITAS: 'Hoplitas' };
+const LINEAS = { CUERPO_A_CUERPO: 'Cuerpo a cuerpo', DISTANCIA: 'Distancia', ASEDIO: 'Asedio' };
+const TIPOS = { criatura: 'Criatura', clima: 'Clima', efecto: 'Efecto' };
+
+const elecciones = {};
+let filtro = 'todas';
+let verCrudas = false;
+let coleccion = null;
+
+const $ = id => document.getElementById(id);
+function el(tag, clase, texto) {
+  const e = document.createElement(tag);
+  if (clase) e.className = clase;
+  if (texto != null) e.textContent = texto;
+  return e;
+}
+
+function estado(texto, tipo) {
+  const e = $('estado');
+  e.textContent = texto;
+  e.className = 'estado' + (tipo ? ' ' + tipo : '');
+}
+
+function contar() {
+  const total = Object.keys(elecciones).length;
+  const c = $('cuenta');
+  c.replaceChildren();
+  const t = el('span', 'total');
+  t.append(el('b', null, String(total)), ` de ${CARTAS.length} elegidas`);
+  c.append(t);
+  for (const f of Object.keys(NOMBRES)) {
+    const del = CARTAS.filter(x => x.faccion === f);
+    c.append(el('span', null, `${NOMBRES[f]} ${del.filter(x => elecciones[x.id]).length}/${del.length}`));
+  }
+  $('medidor').style.width = `${(total / CARTAS.length) * 100}%`;
+  const orden = {};
+  CARTAS.forEach(x => { if (elecciones[x.id]) orden[x.id] = elecciones[x.id]; });
+  $('json').value = JSON.stringify(orden, null, 2);
+}
+
+function visible(c) {
+  if (filtro === 'todas') return true;
+  if (filtro === 'pendientes') return !elecciones[c.id];
+  return c.faccion === filtro;
+}
+
+function fila(c) {
+  const art = el('article', 'carta');
+  art.style.setProperty('--fac', `var(--${c.faccion})`);
+  const info = el('div', 'info');
+  info.append(el('h2', null, c.nombre), el('p', null, c.desc));
+  const datos = el('div', 'datos');
+  datos.append(el('span', 'fac', NOMBRES[c.faccion]), el('span', null, TIPOS[c.tipo]));
+  if (c.linea) datos.append(el('span', null, LINEAS[c.linea] + (c.fuerza != null ? ` · ${c.fuerza}` : '')));
+  info.append(datos);
+
+  const ops = el('div', 'opciones');
+  ops.setAttribute('role', 'group');
+  ops.setAttribute('aria-label', `Opciones para ${c.nombre}`);
+  c.px.forEach((src, i) => {
+    const n = i + 1;
+    const b = el('button', 'opcion');
+    b.type = 'button';
+    b.setAttribute('aria-pressed', String(elecciones[c.id] === n));
+    b.setAttribute('aria-label', `${c.nombre}, opción ${n}`);
+    const img = el('img');
+    img.src = src; img.alt = '';
+    b.append(img);
+    if (verCrudas) {
+      const raw = el('img', 'cruda');
+      raw.src = c.raw[i]; raw.alt = '';
+      b.append(raw);
+    }
+    b.append(el('small', null, elecciones[c.id] === n ? `opción ${n} · elegida` : `opción ${n}`));
+    b.addEventListener('click', () => elegir(c.id, n));
+    ops.append(b);
+  });
+  art.append(info, ops);
+  return art;
+}
+
+function render() {
+  const lista = $('lista');
+  const cartas = CARTAS.filter(visible);
+  lista.replaceChildren(...cartas.map(fila));
+  if (!cartas.length) lista.append(el('p', 'vacio', 'No queda ninguna carta sin elegir en este filtro.'));
+  contar();
+}
+
+async function elegir(id, n) {
+  const quitar = elecciones[id] === n;
+  if (quitar) delete elecciones[id]; else elecciones[id] = n;
+  render();
+  if (!coleccion) return;
+  try {
+    const ref = coleccion.doc(id);
+    if (quitar) await ref.delete(); else await ref.set({ opcion: n });
+    estado('Guardado', 'ok');
+  } catch (e) {
+    estado(`No se pudo guardar (${e.code || 'error'}). Probá de nuevo.`, 'aviso');
+  }
+}
+
+document.querySelectorAll('[data-filtro]').forEach(b => b.addEventListener('click', () => {
+  filtro = b.dataset.filtro;
+  document.querySelectorAll('[data-filtro]').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+  render();
+}));
+$('crudas').addEventListener('click', e => {
+  verCrudas = !verCrudas;
+  e.currentTarget.setAttribute('aria-pressed', String(verCrudas));
+  render();
+});
+
+render();
+
+(async () => {
+  const db = window.claude?.use ? await window.claude.use('db') : null;
+  if (!db) {
+    estado('Sin conexión: las elecciones quedan solo en esta pestaña; copialas desde el texto de abajo', 'aviso');
+    return;
+  }
+  coleccion = db.collection('elecciones');
+  coleccion.onSnapshot(snap => {
+    for (const k of Object.keys(elecciones)) delete elecciones[k];
+    snap.docs.forEach(d => { const v = d.data(); if (v && v.opcion) elecciones[d.id] = v.opcion; });
+    estado('Sincronizado', 'ok');
+    render();
+  }, e => estado(`Sin sincronizar (${e.code || 'error'})`, 'aviso'));
+})();
+</script>

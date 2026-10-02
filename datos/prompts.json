@@ -1,5 +1,5 @@
 {
-  "plantilla": "{sujeto}, {faccion}, fantasy card game illustration, single subject, full body, centered, simple dark background, pixel art, PixArFK",
+  "plantilla": "{sujeto}, {faccion}, background: {escenario}, fantasy card game illustration, single subject, full body, centered, pixel art, PixArFK",
   "negativo": "text, letters, watermark, signature, frame, border, card, multiple subjects, cropped, blurry, photo, realistic, 3d render",
   "facciones": {
     "DRACONIENS": "volcanic fire creature, glowing magma, red and orange tones",
@@ -10,5 +10,10 @@
     "saxardent": "a huge golem made of black volcanic rock with glowing lava cracks",
     "thoron": "a majestic eagle with spread wings perched on a tree branch",
     "sideron": "an ancient giant iron war colossus with rusty armor plates and a glowing furnace eye slit"
+  },
+  "escenarios": {
+    "DRACONIENS": "inside a volcano fortress with lava rivers and ash sky",
+    "LOTHRIM": "a giant ancient tree in a glowing forest",
+    "HOPLITAS": "old rusty iron city walls under a dusty sky"
   }
 }

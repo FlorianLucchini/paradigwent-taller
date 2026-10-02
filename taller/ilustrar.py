@@ -107,7 +107,9 @@ def main() -> None:
     for carta_id in a.cartas:
         carta = todas[carta_id]
         positivo = prompts["plantilla"].format(
-            sujeto=prompts["cartas"][carta_id], faccion=prompts["facciones"][carta["faccion"]]
+            sujeto=prompts["cartas"][carta_id],
+            faccion=prompts["facciones"][carta["faccion"]],
+            escenario=prompts["escenarios"][carta["faccion"]],
         )
         for n in range(1, a.opciones + 1):
             nombre = f"{carta_id}-{n}.png"

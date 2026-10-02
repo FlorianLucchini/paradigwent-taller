@@ -30,6 +30,12 @@ uv run python -m taller.ilustrar sideron --lote prueba   # genera ilustraciones 
 - [Estructura](docs/estructura.md): qué va en cada carpeta y el formato de las cartas.
 - [Herramientas](docs/herramientas.md): con qué se genera cada cosa y cuánto cuesta.
 
-## Autores
+## Autores y licencia
 
 Florian Lucchini y Matías Portela.
+
+- El código está bajo [licencia MIT](LICENSE).
+- Las imágenes, los datos y los sonidos de `assets/` y `datos/` están bajo
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es): se pueden usar
+  citando a los autores. Las ilustraciones hechas con Stable Diffusion se marcan como
+  generadas con IA.

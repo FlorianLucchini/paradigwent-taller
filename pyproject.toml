@@ -1,0 +1,15 @@
+[project]
+name = "paradigwent-taller"
+version = "0.1.0"
+description = "Assets de Paradigwent: datos de cartas, pixel art, piezas del tablero y sonidos"
+requires-python = ">=3.12"
+dependencies = ["pillow>=10"]
+
+[dependency-groups]
+dev = ["ruff>=0.6"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

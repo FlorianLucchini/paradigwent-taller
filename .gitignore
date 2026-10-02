@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.ruff_cache/
+
+# Raw Stable Diffusion output (512 px): only the pixelated version is kept
+pruebas/*/crudas/

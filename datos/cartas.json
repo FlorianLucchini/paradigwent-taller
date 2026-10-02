@@ -1,0 +1,835 @@
+{
+  "cartas": [
+    {
+      "id": "cendre",
+      "nombre": "Cendre",
+      "faccion": "DRACONIENS",
+      "tipo": "clima",
+      "lineaAfectada": "CUERPO_A_CUERPO",
+      "descripcion": "La ceniza no deja respirar a los que pelean de cerca"
+    },
+    {
+      "id": "ignisium",
+      "nombre": "Ignisium",
+      "faccion": "DRACONIENS",
+      "tipo": "clima",
+      "lineaAfectada": "DISTANCIA",
+      "descripcion": "Lluvia de fuego: las flechas se queman en el aire"
+    },
+    {
+      "id": "tremor",
+      "nombre": "Tremor",
+      "faccion": "DRACONIENS",
+      "tipo": "clima",
+      "lineaAfectada": "ASEDIO",
+      "descripcion": "Un terremoto voltea las máquinas de asedio"
+    },
+    {
+      "id": "saxardent",
+      "nombre": "Saxardent",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 10,
+      "descripcion": "Golem de magma"
+    },
+    {
+      "id": "draconarius",
+      "nombre": "Draconarius",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 9,
+      "descripcion": "Portaestandarte de Arx Infera"
+    },
+    {
+      "id": "unguis",
+      "nombre": "Unguis",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 8,
+      "descripcion": "Desgarrador abisal"
+    },
+    {
+      "id": "squamifer",
+      "nombre": "Squamifer",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 7,
+      "descripcion": "Asesino escamoso"
+    },
+    {
+      "id": "brasier",
+      "nombre": "Brasier",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 6,
+      "descripcion": "Furia abrasadora"
+    },
+    {
+      "id": "cerbere",
+      "nombre": "Cerbère",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 6,
+      "descripcion": "Cerbero volcánico: guardián de las puertas de Arx Infera"
+    },
+    {
+      "id": "obsidienne",
+      "nombre": "Obsidienne",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 5,
+      "descripcion": "Guardián de obsidiana"
+    },
+    {
+      "id": "lavacanis",
+      "nombre": "Lavacanis",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 5,
+      "descripcion": "Sabueso de lava"
+    },
+    {
+      "id": "salamandra",
+      "nombre": "Salamandra",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 5,
+      "descripcion": "Salamandra de fuego"
+    },
+    {
+      "id": "flammifer",
+      "nombre": "Flammifer",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 5,
+      "descripcion": "Mago de llamas"
+    },
+    {
+      "id": "arbalete",
+      "nombre": "Arbalète",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 4,
+      "descripcion": "Ballestero de virotes ardientes"
+    },
+    {
+      "id": "scintilla",
+      "nombre": "Scintilla",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 3,
+      "descripcion": "Chispa eterna: se desprende de las llamas eternas del volcán y pelea por ellas"
+    },
+    {
+      "id": "vouivre",
+      "nombre": "Vouivre",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 3,
+      "descripcion": "Dragón alado menor: escupe fuego desde el cielo"
+    },
+    {
+      "id": "fronde",
+      "nombre": "Fronde",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 2,
+      "descripcion": "Hondero de piedra volcánica"
+    },
+    {
+      "id": "soufre",
+      "nombre": "Soufre",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 2,
+      "descripcion": "Alquimista del azufre: lanza frascos que estallan en llamas"
+    },
+    {
+      "id": "novicius",
+      "nombre": "Novicius",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 1,
+      "descripcion": "Aprendiz de fuego"
+    },
+    {
+      "id": "eruptio",
+      "nombre": "Eruptio",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 5,
+      "descripcion": "Invocador de erupciones"
+    },
+    {
+      "id": "onager",
+      "nombre": "Onager",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 4,
+      "descripcion": "Onagro de magma: lanza rocas fundidas"
+    },
+    {
+      "id": "belier",
+      "nombre": "Bélier",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 3,
+      "descripcion": "Ariete de basalto"
+    },
+    {
+      "id": "tarasque",
+      "nombre": "Tarasque",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 3,
+      "descripcion": "Tarasca: dragón de caparazón ardiente que derriba murallas"
+    },
+    {
+      "id": "fournaise",
+      "nombre": "Fournaise",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 2,
+      "descripcion": "Horno de guerra: un fogonero lo alimenta y dispara proyectiles de magma"
+    },
+    {
+      "id": "lapidator",
+      "nombre": "Lapidator",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 2,
+      "descripcion": "Gigante de piedra: lanza rocas volcánicas"
+    },
+    {
+      "id": "fossor",
+      "nombre": "Fossor",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 1,
+      "descripcion": "Zapador de túneles"
+    },
+    {
+      "id": "flammecor",
+      "nombre": "Flammecor",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 6,
+      "descripcion": "Señor de Arx Infera",
+      "habilidad": {
+        "tipo": "DuplicarLinea",
+        "linea": "CUERPO_A_CUERPO"
+      }
+    },
+    {
+      "id": "cinerea",
+      "nombre": "Cinerea",
+      "faccion": "DRACONIENS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 4,
+      "descripcion": "Sacerdotisa de las llamas eternas",
+      "habilidad": {
+        "tipo": "EliminarCriatura"
+      }
+    },
+    {
+      "id": "phenix",
+      "nombre": "Phénix",
+      "faccion": "DRACONIENS",
+      "tipo": "efecto",
+      "descripcion": "Renace de las cenizas",
+      "efecto": {
+        "tipo": "ResucitarCarta"
+      }
+    },
+    {
+      "id": "vocatio",
+      "nombre": "Vocatio",
+      "faccion": "DRACONIENS",
+      "tipo": "efecto",
+      "descripcion": "Llamado del volcán: acuden nuevos guerreros",
+      "efecto": {
+        "tipo": "RobarCartas",
+        "cantidad": 2
+      }
+    },
+    {
+      "id": "meril",
+      "nombre": "Meril",
+      "faccion": "LOTHRIM",
+      "tipo": "clima",
+      "lineaAfectada": "CUERPO_A_CUERPO",
+      "descripcion": "Rosales de espinas atrapan a los que pelean de cerca"
+    },
+    {
+      "id": "lasgwae",
+      "nombre": "Lasgwae",
+      "faccion": "LOTHRIM",
+      "tipo": "clima",
+      "lineaAfectada": "DISTANCIA",
+      "descripcion": "Un remolino de hojas desvía las flechas y tapa la vista"
+    },
+    {
+      "id": "thond",
+      "nombre": "Thond",
+      "faccion": "LOTHRIM",
+      "tipo": "clima",
+      "lineaAfectada": "ASEDIO",
+      "descripcion": "Las raíces brotan del suelo y traban las máquinas"
+    },
+    {
+      "id": "graw",
+      "nombre": "Graw",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 6,
+      "descripcion": "Oso de Galadloth"
+    },
+    {
+      "id": "rifthand",
+      "nombre": "Rîfthand",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 5,
+      "descripcion": "Escudero de corteza"
+    },
+    {
+      "id": "nordhathol",
+      "nombre": "Nordhathol",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 4,
+      "descripcion": "Hachero de roble"
+    },
+    {
+      "id": "eregmegil",
+      "nombre": "Eregmegil",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 4,
+      "descripcion": "Espadachín de espinas"
+    },
+    {
+      "id": "aras",
+      "nombre": "Aras",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 3,
+      "descripcion": "Jinete de ciervo"
+    },
+    {
+      "id": "thondthand",
+      "nombre": "Thondthand",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 3,
+      "descripcion": "Guardián de raíces"
+    },
+    {
+      "id": "draug",
+      "nombre": "Draug",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 2,
+      "descripcion": "Lobo del bosque"
+    },
+    {
+      "id": "edolbang",
+      "nombre": "Edolbang",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 2,
+      "descripcion": "Alfil de hiedra"
+    },
+    {
+      "id": "loew",
+      "nombre": "Loew",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 1,
+      "descripcion": "Artífice del musgo"
+    },
+    {
+      "id": "galadhcu",
+      "nombre": "Galadhcû",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 10,
+      "descripcion": "Arquero del Gran Árbol"
+    },
+    {
+      "id": "thoron",
+      "nombre": "Thoron",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 9,
+      "descripcion": "Águila de las copas"
+    },
+    {
+      "id": "hithlind",
+      "nombre": "Hîthlind",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 8,
+      "descripcion": "Cantora de niebla"
+    },
+    {
+      "id": "gwendodcu",
+      "nombre": "Gwendodcû",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 7,
+      "descripcion": "Arquera de sauco"
+    },
+    {
+      "id": "eregpilin",
+      "nombre": "Eregpilin",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 6,
+      "descripcion": "Tirador de espinas"
+    },
+    {
+      "id": "niw",
+      "nombre": "Nîw",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 6,
+      "descripcion": "Enjambre de Galadloth"
+    },
+    {
+      "id": "pengron",
+      "nombre": "Pengron",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 5,
+      "descripcion": "Arquero enraizado"
+    },
+    {
+      "id": "thondlind",
+      "nombre": "Thondlind",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 5,
+      "descripcion": "Cantor de la tierra: su canto agrieta el suelo bajo las líneas enemigas"
+    },
+    {
+      "id": "tatharhant",
+      "nombre": "Tatharhant",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 4,
+      "descripcion": "Lanzador del sauce sur"
+    },
+    {
+      "id": "cordofhant",
+      "nombre": "Cordofhant",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 3,
+      "descripcion": "Lanzasemillas: las semillas revientan en enredaderas"
+    },
+    {
+      "id": "whinnhant",
+      "nombre": "Whinnhant",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 3,
+      "descripcion": "Catapulta de abedul: un árbol doblado que lanza rocas"
+    },
+    {
+      "id": "galadhdring",
+      "nombre": "Galadhdring",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 2,
+      "descripcion": "Ariete de batalla"
+    },
+    {
+      "id": "paichhant",
+      "nombre": "Paichhant",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 2,
+      "descripcion": "Lanzador de savia: la savia pegajosa traba las máquinas enemigas"
+    },
+    {
+      "id": "edolceber",
+      "nombre": "Edolceber",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 1,
+      "descripcion": "Trampa de hiedra: estacas cubiertas de hiedra en el camino"
+    },
+    {
+      "id": "lothiel",
+      "nombre": "Lothiel",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 6,
+      "descripcion": "Princesa de los Lothrim",
+      "habilidad": {
+        "tipo": "DuplicarLinea",
+        "linea": "DISTANCIA"
+      }
+    },
+    {
+      "id": "thondir",
+      "nombre": "Thondir",
+      "faccion": "LOTHRIM",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 4,
+      "descripcion": "Druida de Galadloth",
+      "habilidad": {
+        "tipo": "ResucitarCarta"
+      }
+    },
+    {
+      "id": "thondmab",
+      "nombre": "Thondmab",
+      "faccion": "LOTHRIM",
+      "tipo": "efecto",
+      "descripcion": "Raíces ladronas: brotan del suelo y se llevan bajo tierra a la criatura que más energía emana",
+      "efecto": {
+        "tipo": "EliminarCriatura"
+      }
+    },
+    {
+      "id": "annloth",
+      "nombre": "Annloth",
+      "faccion": "LOTHRIM",
+      "tipo": "efecto",
+      "descripcion": "Regalo de la flor de loto: Galadloth hace nacer guerreros nuevos",
+      "efecto": {
+        "tipo": "RobarCartas",
+        "cantidad": 2
+      }
+    },
+    {
+      "id": "tribolos",
+      "nombre": "Tribolos",
+      "faccion": "HOPLITAS",
+      "tipo": "clima",
+      "lineaAfectada": "CUERPO_A_CUERPO",
+      "descripcion": "Púas de hierro en el suelo: nadie avanza"
+    },
+    {
+      "id": "kapnos",
+      "nombre": "Kapnos",
+      "faccion": "HOPLITAS",
+      "tipo": "clima",
+      "lineaAfectada": "DISTANCIA",
+      "descripcion": "Cortina de humo: los arqueros no ven el blanco"
+    },
+    {
+      "id": "hydor",
+      "nombre": "Hydor",
+      "faccion": "HOPLITAS",
+      "tipo": "clima",
+      "lineaAfectada": "ASEDIO",
+      "descripcion": "Inundan el campo: las máquinas se hunden en el barro"
+    },
+    {
+      "id": "phalanx",
+      "nombre": "Phalanx",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 6,
+      "descripcion": "Falange de Siderópolis"
+    },
+    {
+      "id": "aspis",
+      "nombre": "Aspis",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 5,
+      "descripcion": "Escudero de bronce"
+    },
+    {
+      "id": "hoplomachos",
+      "nombre": "Hoplomachos",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 4,
+      "descripcion": "Maestro antiguo: entrena a los efebos, nunca fue derrotado"
+    },
+    {
+      "id": "molossos",
+      "nombre": "Molossos",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 4,
+      "descripcion": "Moloso de guerra: rompe la formación enemiga"
+    },
+    {
+      "id": "kopis",
+      "nombre": "Kopis",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 3,
+      "descripcion": "Espadachín de hoja curva"
+    },
+    {
+      "id": "tauros",
+      "nombre": "Tauros",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 3,
+      "descripcion": "Toro acorazado: bestia domada"
+    },
+    {
+      "id": "hippeus",
+      "nombre": "Hippeus",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 2,
+      "descripcion": "Jinete arriero: conduce a las bestias de guerra"
+    },
+    {
+      "id": "sarissa",
+      "nombre": "Sarissa",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 2,
+      "descripcion": "Piquera: la pica más larga de Siderópolis"
+    },
+    {
+      "id": "ephebos",
+      "nombre": "Ephebos",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 1,
+      "descripcion": "Recluta mañoso"
+    },
+    {
+      "id": "toxotes",
+      "nombre": "Toxotes",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 5,
+      "descripcion": "Arquero de Siderópolis"
+    },
+    {
+      "id": "gastraphetes",
+      "nombre": "Gastraphetes",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 4,
+      "descripcion": "Ballestero: tensa su ballesta apoyándola en el vientre"
+    },
+    {
+      "id": "sphendone",
+      "nombre": "Sphendone",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 3,
+      "descripcion": "Hondero de plomo"
+    },
+    {
+      "id": "akontistes",
+      "nombre": "Akontistes",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 3,
+      "descripcion": "Jabalinero"
+    },
+    {
+      "id": "hierax",
+      "nombre": "Hierax",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 2,
+      "descripcion": "Halcón cazador: se lanza sobre los arqueros enemigos"
+    },
+    {
+      "id": "pyrphoros",
+      "nombre": "Pyrphoros",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 2,
+      "descripcion": "Lanzador de vasijas incendiarias"
+    },
+    {
+      "id": "skopos",
+      "nombre": "Skopos",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "DISTANCIA",
+      "fuerza": 1,
+      "descripcion": "Vigía de la muralla"
+    },
+    {
+      "id": "sideron",
+      "nombre": "Sideron",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 10,
+      "descripcion": "Coloso de hierro: la máquina de guerra más antigua de Siderópolis, oxidada pero todavía en pie"
+    },
+    {
+      "id": "helepolis",
+      "nombre": "Helepolis",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 9,
+      "descripcion": "Torre de asedio"
+    },
+    {
+      "id": "petrobolos",
+      "nombre": "Petrobolos",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 8,
+      "descripcion": "Catapulta de torsión: lanza piedras por encima de las murallas"
+    },
+    {
+      "id": "oxybeles",
+      "nombre": "Oxybeles",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 7,
+      "descripcion": "Ballesta gigante: dispara virotes de hierro"
+    },
+    {
+      "id": "krios",
+      "nombre": "Krios",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 6,
+      "descripcion": "Ariete de hierro"
+    },
+    {
+      "id": "sambyke",
+      "nombre": "Sambyke",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 6,
+      "descripcion": "Escala de asalto: un puente sobre ruedas que se tiende hasta lo alto de la muralla"
+    },
+    {
+      "id": "chelone",
+      "nombre": "Chelone",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 5,
+      "descripcion": "Tortuga de asedio: bajo su techo, los zapadores llegan hasta el pie de la muralla"
+    },
+    {
+      "id": "dorikles",
+      "nombre": "Dorikles",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "CUERPO_A_CUERPO",
+      "fuerza": 5,
+      "descripcion": "Estratego de Siderópolis",
+      "habilidad": {
+        "tipo": "DuplicarLinea",
+        "linea": "ASEDIO"
+      }
+    },
+    {
+      "id": "technaia",
+      "nombre": "Technaia",
+      "faccion": "HOPLITAS",
+      "tipo": "criatura",
+      "linea": "ASEDIO",
+      "fuerza": 4,
+      "descripcion": "Maestra de ingenieros",
+      "habilidad": {
+        "tipo": "Sabotear"
+      }
+    },
+    {
+      "id": "salpinx",
+      "nombre": "Salpinx",
+      "faccion": "HOPLITAS",
+      "tipo": "efecto",
+      "descripcion": "Trompeta de guerra: llama a los aliados al combate",
+      "efecto": {
+        "tipo": "RobarCartas",
+        "cantidad": 2
+      }
+    },
+    {
+      "id": "dolos",
+      "nombre": "Dolos",
+      "faccion": "HOPLITAS",
+      "tipo": "efecto",
+      "descripcion": "Emboscada: una trampa saca de combate a la criatura más fuerte",
+      "efecto": {
+        "tipo": "EliminarCriatura"
+      }
+    }
+  ]
+}

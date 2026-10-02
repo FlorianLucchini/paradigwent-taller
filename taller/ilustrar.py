@@ -4,9 +4,9 @@ ComfyUI has to be running (see docs/herramientas.md). Example:
 
     uv run python -m taller.ilustrar saxardent thoron sideron --lote comparacion
 
-For each card it saves N raw candidates and their pixelated version under
-pruebas/<lote>/, then writes the review sheet. Cards that already have their
-candidates are skipped, so an interrupted run can be resumed.
+For each card it saves N raw candidates and their pixelated versions under
+pruebas/<lote>/, then writes the review sheet. Candidates that already exist are
+not generated again, so an interrupted run can be resumed.
 """
 
 import argparse
@@ -94,15 +94,15 @@ def main() -> None:
     args.add_argument("cartas", nargs="+", help="ids de cartas (ver datos/cartas.json)")
     args.add_argument("--lote", default="lote", help="carpeta dentro de pruebas/")
     args.add_argument("--opciones", type=int, default=4)
-    args.add_argument("--lado", type=int, default=64, help="tamaño final en píxeles")
+    args.add_argument("--lados", type=int, nargs="+", default=[48], help="tamaños finales en píxeles")
     args.add_argument("--servidor", default="http://127.0.0.1:8188")
     a = args.parse_args()
 
     todas, pals, prompts = cartas(), paletas(), cargar("prompts.json")
     crudas = PRUEBAS / a.lote / "crudas"
-    pixeladas = PRUEBAS / a.lote / "pixeladas"
     crudas.mkdir(parents=True, exist_ok=True)
-    pixeladas.mkdir(parents=True, exist_ok=True)
+    for lado in a.lados:
+        (PRUEBAS / a.lote / f"pixeladas-{lado}").mkdir(exist_ok=True)
 
     for carta_id in a.cartas:
         carta = todas[carta_id]
@@ -113,15 +113,17 @@ def main() -> None:
         )
         for n in range(1, a.opciones + 1):
             nombre = f"{carta_id}-{n}.png"
-            if (pixeladas / nombre).exists():
-                continue
-            inicio = time.time()
-            imagen = generar(a.servidor, positivo, prompts["negativo"], semilla=zlib.crc32(nombre.encode()))
-            imagen.save(crudas / nombre)
-            pixelar(imagen, pals[carta["faccion"]], a.lado).save(pixeladas / nombre)
-            print(f"{nombre} en {time.time() - inicio:.0f} s")
+            if (crudas / nombre).exists():
+                imagen = Image.open(crudas / nombre)
+            else:
+                inicio = time.time()
+                imagen = generar(a.servidor, positivo, prompts["negativo"], semilla=zlib.crc32(nombre.encode()))
+                imagen.save(crudas / nombre)
+                print(f"{nombre} en {time.time() - inicio:.0f} s")
+            for lado in a.lados:
+                pixelar(imagen, pals[carta["faccion"]], lado).save(PRUEBAS / a.lote / f"pixeladas-{lado}" / nombre)
 
-    hoja.escribir(a.lote, a.cartas, a.opciones)
+    hoja.escribir(a.lote, a.cartas, a.opciones, a.lados)
 
 
 if __name__ == "__main__":

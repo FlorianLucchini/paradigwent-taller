@@ -21,7 +21,7 @@ def figura(src: str, pie: str, pixel: bool) -> str:
     return f'<figure><img{clase} src="{src}" alt="{escape(pie)}"><figcaption>{escape(pie)}</figcaption></figure>'
 
 
-def escribir(lote: str, ids: list[str], opciones: int) -> None:
+def escribir(lote: str, ids: list[str], opciones: int, lados: list[int]) -> None:
     todas = cartas()
     bloques = []
     for carta_id in ids:
@@ -29,7 +29,8 @@ def escribir(lote: str, ids: list[str], opciones: int) -> None:
         grupos = []
         if (ASSETS / "ilustraciones" / f"{carta_id}.png").exists():
             grupos.append(("Por código", [figura(f"../../assets/ilustraciones/{carta_id}.png", "código", True)]))
-        for carpeta, titulo, pixel in (("crudas", "Stable Diffusion", False), ("pixeladas", "Pixelada", True)):
+        carpetas = [("crudas", "Stable Diffusion", False)] + [(f"pixeladas-{n}", f"{n} × {n}", True) for n in lados]
+        for carpeta, titulo, pixel in carpetas:
             figs = [
                 figura(f"{carpeta}/{carta_id}-{n}.png", f"opción {n}", pixel)
                 for n in range(1, opciones + 1)

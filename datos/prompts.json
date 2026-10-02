@@ -1,6 +1,6 @@
 {
-  "plantilla": "{sujeto}, {faccion}, background: {escenario}, fantasy card game illustration, single subject, full body, centered, pixel art, PixArFK",
-  "negativo": "text, letters, watermark, signature, frame, border, card, multiple subjects, cropped, blurry, photo, realistic, 3d render",
+  "plantilla": "({sujeto}:1.2), {faccion}, background: {escenario}, fantasy card game illustration, single subject, full body, centered, pixel art, PixArFK",
+  "negativo": "blue sky, cyan, text, letters, watermark, signature, frame, border, card, multiple subjects, cropped, empty landscape, blurry, photo, realistic, 3d render",
   "facciones": {
     "DRACONIENS": "volcanic fire creature, glowing magma, red and orange tones",
     "LOTHRIM": "elven enchanted forest, green and brown tones",

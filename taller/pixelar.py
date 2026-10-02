@@ -10,7 +10,9 @@ from taller.datos import hex_a_rgb
 
 
 def colores_de(paleta: dict) -> list[tuple[int, int, int]]:
-    hexas = [*paleta["colores"].values(), *paleta["cielo"]]
+    excluidos = set(paleta.get("soloPiezas", []))
+    hexas = [h for letra, h in paleta["colores"].items() if letra not in excluidos]
+    hexas += paleta["cielo"]
     if paleta["suelo"]:
         hexas.append(paleta["suelo"])
     return [hex_a_rgb(h) for h in hexas]

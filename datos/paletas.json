@@ -41,7 +41,10 @@
       "#25492d",
       "#2e5735"
     ],
-    "suelo": "#16240f"
+    "suelo": "#16240f",
+    "soloPiezas": [
+      "P"
+    ]
   },
   "HOPLITAS": {
     "colores": {

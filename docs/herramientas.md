@@ -20,8 +20,9 @@ consistente, pero cada carta hay que dibujarla a mano.
 **Con Stable Diffusion.** `taller.ilustrar` toma la descripción de la carta y:
 
 1. Le pide a Stable Diffusion varias opciones de 512 × 512, ya en estilo pixel art.
-2. Las achica a 64 × 64 y fuerza cada píxel a la paleta de la facción, que es lo que hace
-   que todas parezcan del mismo juego.
+2. Las achica a 48 × 48 (otros tamaños con `--lados 48 64`) y fuerza cada píxel a la
+   paleta de la facción, que es lo que hace que todas parezcan del mismo juego. Los colores
+   de `soloPiezas` (como el rosa de la flor Lothrim) quedan afuera.
 3. Arma `pruebas/<lote>/index.html` para comparar y elegir.
 
 Si se corta, al volver a correrlo sigue desde donde quedó.

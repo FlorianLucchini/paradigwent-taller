@@ -106,7 +106,8 @@ def main() -> None:
 
     for carta_id in a.cartas:
         carta = todas[carta_id]
-        positivo = prompts["plantilla"].format(
+        plantilla = prompts["plantillas"]["criatura" if carta["tipo"] == "criatura" else "escena"]
+        positivo = plantilla.format(
             sujeto=prompts["cartas"][carta_id],
             faccion=prompts["facciones"][carta["faccion"]],
             escenario=prompts["escenarios"][carta["faccion"]],

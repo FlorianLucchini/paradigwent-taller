@@ -21,8 +21,9 @@ Requiere [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync                                   # instala las dependencias
-uv run python -m taller.pintar            # dibuja el pixel art hecho por código en assets/
+uv run python -m taller.pintar            # dibuja las piezas del tablero en assets/piezas/
 uv run python -m taller.ilustrar sideron --lote prueba   # genera ilustraciones (necesita ComfyUI)
+uv run python -m taller.promover prueba   # pasa las elegidas a assets/ilustraciones/
 ```
 
 ## Documentación

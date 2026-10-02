@@ -1,4 +1,4 @@
-"""Pixel maps drawn by hand.
+"""Pixel maps drawn by hand for the board pieces.
 
 Each map stores only the left half of a symmetric sprite; `filas` mirrors it.
 Every character is a key of the faction palette in `datos/paletas.json`, and
@@ -6,85 +6,6 @@ Every character is a key of the faction palette in `datos/paletas.json`, and
 """
 
 MAPAS = {
-    # Card illustrations, 24 x 24
-    "golem": [
-        "............",
-        "........KKKK",
-        ".......KSsss",
-        "......KSsYYs",
-        "......KSssss",
-        "......KSsOOO",
-        "...KKKKKSSSS",
-        "..KSssKKSsss",
-        ".KSssOsKSsOs",
-        ".KSsOOsKSsOO",
-        ".KSsOssKSssO",
-        ".KSssssKSsss",
-        ".KSsOssKSOss",
-        ".KSssYsKSsss",
-        ".KKSSSSKSsOs",
-        "..KOOYKKSsss",
-        "..KYWYK.KSSS",
-        "...KKK..KSss",
-        ".......KSsK.",
-        ".......KSOK.",
-        ".......KSsK.",
-        "......KSSSK.",
-        "......KKKKK.",
-        "............",
-    ],
-    "aguila": [
-        "............",
-        "............",
-        "..........KK",
-        ".........KWW",
-        "........KWWW",
-        "........KWKW",
-        "........KWWY",
-        "Kb.....KBBWY",
-        "KbbK..KBbBBB",
-        "KbbbKKBbbBBB",
-        ".KbbbbBbBBBB",
-        ".KbBbbbBBBbB",
-        "..KbBbbBBbBB",
-        "..KKbBbbBBbB",
-        "....KKbBBbBB",
-        "......KBBBBB",
-        "......KbBBbB",
-        ".......KbBBB",
-        "........KYKY",
-        "..lg....KYKY",
-        ".gGKBBBBBBBB",
-        "..KbbbbbbbbB",
-        "...KKKKKKKKK",
-        "............",
-    ],
-    "coloso": [
-        "............",
-        ".........KKK",
-        "........KIii",
-        "........KIii",
-        "........KIKK",
-        "........KIFF",
-        "........KIii",
-        "....KKKKKKKK",
-        "...KIiiIKYIi",
-        "..KIiIiIKIiR",
-        "..KIRIiIKiIi",
-        "..KIiIIKKIYi",
-        "..KIiK.KIiIR",
-        "..KiIK.KIiRi",
-        "..KIRK.KIiIi",
-        "..KYYK.KKKKK",
-        "..KKKK.KMmMm",
-        ".......KIiK.",
-        ".......KIRK.",
-        ".......KIiK.",
-        "......KIiiK.",
-        "......KYYYK.",
-        "......KKKKK.",
-        "............",
-    ],
     # Life tokens, 12 x 12
     "llama": [
         "......",
@@ -227,9 +148,6 @@ MAPAS = {
         "........",
     ],
 }
-
-# Which hand-drawn illustration each card uses (only the prototype ones so far)
-ILUSTRACIONES = {"saxardent": "golem", "thoron": "aguila", "sideron": "coloso"}
 
 # Board pieces: file name -> (map, palette)
 PIEZAS = {

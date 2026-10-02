@@ -1,4 +1,4 @@
-"""Review sheet: one row per card with the hand-drawn sprite (if any), the raw
+"""Review sheet: one row per card with its current illustration (if any), the raw
 candidates and their pixelated version, side by side."""
 
 from html import escape
@@ -28,7 +28,7 @@ def escribir(lote: str, ids: list[str], opciones: int, lados: list[int]) -> None
         carta = todas[carta_id]
         grupos = []
         if (ASSETS / "ilustraciones" / f"{carta_id}.png").exists():
-            grupos.append(("Por código", [figura(f"../../assets/ilustraciones/{carta_id}.png", "código", True)]))
+            grupos.append(("Actual", [figura(f"../../assets/ilustraciones/{carta_id}.png", "en assets", True)]))
         carpetas = [("crudas", "Stable Diffusion", False)] + [(f"pixeladas-{n}", f"{n} × {n}", True) for n in lados]
         for carpeta, titulo, pixel in carpetas:
             figs = [

@@ -11,21 +11,24 @@ Todo es gratuito y corre en una computadora común.
 | ComfyUI | El programa que ejecuta Stable Diffusion |
 | LoRA Pixel Art Redmond | Le enseña a Stable Diffusion el estilo pixel art |
 
-## Dos formas de hacer una ilustración
+## Cómo se hace cada imagen
 
-**Por código.** Cada sprite es un mapa de letras en `taller/sprites.py`, donde cada letra
-es un color de la paleta. `taller.pintar` lo convierte en PNG. Es instantáneo y siempre
-consistente, pero cada carta hay que dibujarla a mano.
+**Piezas del tablero, por código.** Cada pieza es un mapa de letras en `taller/sprites.py`,
+donde cada letra es un color de la paleta. `taller.pintar` las convierte en PNG.
 
-**Con Stable Diffusion.** `taller.ilustrar` toma la descripción de la carta y:
+**Ilustraciones de las cartas, con Stable Diffusion.** `taller.ilustrar` toma la
+descripción en inglés de cada carta (`datos/prompts.json`) y:
 
-1. Le pide a Stable Diffusion varias opciones de 512 × 512, ya en estilo pixel art.
+1. Le pide a Stable Diffusion varias opciones de 512 × 512, ya en estilo pixel art y con
+   el escenario de su facción.
 2. Las achica a 48 × 48 (otros tamaños con `--lados 48 64`) y fuerza cada píxel a la
    paleta de la facción, que es lo que hace que todas parezcan del mismo juego. Los colores
    de `soloPiezas` (como el rosa de la flor Lothrim) quedan afuera.
 3. Arma `pruebas/<lote>/index.html` para comparar y elegir.
 
-Si se corta, al volver a correrlo sigue desde donde quedó.
+Si se corta, al volver a correrlo sigue desde donde quedó. Las elegidas se anotan en
+`pruebas/<lote>/elegidas.json` (`{"saxardent": 3, ...}`) y `taller.promover` las copia a
+`assets/ilustraciones/`.
 
 ## Stable Diffusion, ComfyUI y LoRA
 

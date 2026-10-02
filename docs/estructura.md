@@ -13,7 +13,7 @@ paradigwent-taller/
 │   ├── tablero/          la mesa y sus zonas
 │   └── sonidos/          música y efectos (WAV)
 ├── taller/               scripts en Python
-└── pruebas/<lote>/       candidatas generadas + index.html para revisarlas
+└── pruebas/<lote>/       candidatas generadas, index.html para revisarlas y elegidas.json
 ```
 
 ## Las cartas
@@ -39,8 +39,8 @@ Los efectos posibles son `DuplicarLinea`, `EliminarCriatura`, `RobarCartas`,
 
 ## El pixel art
 
-- Se guarda en su **tamaño real**: ilustraciones de 48 × 48 (Stable Diffusion) o 24 × 24
-  (por código), piezas de 12 × 12 y emblemas de 16 × 16.
+- Se guarda en su **tamaño real**: ilustraciones de 48 × 48, piezas de 12 × 12 y
+  emblemas de 16 × 16.
 - El juego lo agranda **sin suavizado**, así los píxeles quedan nítidos:
   `imageView.setSmooth(false)` en JavaFX.
 - Cada facción usa solo los colores de su paleta en `datos/paletas.json`.

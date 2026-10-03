@@ -39,7 +39,7 @@ Los efectos posibles son `DuplicarLinea`, `EliminarCriatura`, `RobarCartas`,
 
 ## El pixel art
 
-- Se guarda en su **tamaño real**: ilustraciones de 48 × 48, piezas de 12 × 12 y
+- Se guarda en su **tamaño real**: ilustraciones de 64 × 64, piezas de 12 × 12 y
   emblemas de 16 × 16.
 - El juego lo agranda **sin suavizado**, así los píxeles quedan nítidos:
   `imageView.setSmooth(false)` en JavaFX.

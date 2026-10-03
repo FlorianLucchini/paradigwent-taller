@@ -15,7 +15,7 @@ from taller.datos import ASSETS, PRUEBAS
 def main() -> None:
     args = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     args.add_argument("lote", help="carpeta dentro de pruebas/")
-    args.add_argument("--lado", type=int, default=48)
+    args.add_argument("--lado", type=int, default=64)
     a = args.parse_args()
 
     lote = PRUEBAS / a.lote

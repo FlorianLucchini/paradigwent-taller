@@ -94,7 +94,7 @@ def main() -> None:
     args.add_argument("cartas", nargs="+", help="ids de cartas (ver datos/cartas.json)")
     args.add_argument("--lote", default="lote", help="carpeta dentro de pruebas/")
     args.add_argument("--opciones", type=int, default=4)
-    args.add_argument("--lados", type=int, nargs="+", default=[48], help="tamaños finales en píxeles")
+    args.add_argument("--lados", type=int, nargs="+", default=[64], help="tamaños finales en píxeles")
     args.add_argument("--servidor", default="http://127.0.0.1:8188")
     a = args.parse_args()
 

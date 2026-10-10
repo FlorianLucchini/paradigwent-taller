@@ -308,6 +308,68 @@ def pase() -> np.ndarray:
     return jingle(b, 0.35)
 
 
+def sweep(kind: str, f0: float, f1: float, dur: float, curve: float = 1.0) -> np.ndarray:
+    """Oscillator gliding exponentially from f0 to f1."""
+    n = int(dur * SR)
+    f = f0 * (f1 / f0) ** (np.linspace(0, 1, n) ** curve)
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    if kind == "square":
+        return np.sign(np.sin(ph)) * 0.5
+    return 2 / np.pi * np.arcsin(np.sin(ph))
+
+
+def lowpass_var(x: np.ndarray, cutoffs: np.ndarray) -> np.ndarray:
+    a = np.exp(-2 * np.pi * cutoffs / SR)
+    y = np.empty_like(x)
+    acc = 0.0
+    for i, v in enumerate(x):
+        acc = (1 - a[i]) * v + a[i] * acc
+        y[i] = acc
+    return y
+
+
+def swell(n: int, attack: float) -> np.ndarray:
+    e = np.ones(n)
+    na = int(n * attack)
+    e[:na] = np.linspace(0, 1, na)
+    e[na:] = np.linspace(1, 0, n - na) ** 1.5
+    return e
+
+
+def jugar_carta() -> np.ndarray:
+    """Dry drum hit with a short falling bass blip."""
+    out = np.zeros(int(0.3 * SR))
+    add(out, 0.5 * drum(0.25, 75), 0)
+    s = sweep("square", 220, 110, 0.08)
+    add(out, 0.25 * s * env(len(s), 0.002, 0.03), 0)
+    add(out, 0.2 * noise_hit(0.05, 2500, 10), 0)
+    return out
+
+
+def efecto() -> np.ndarray:
+    """Rising major arpeggio with sparkles."""
+    out = np.zeros(int(1.0 * SR))
+    for k, m in enumerate([64, 68, 71, 76, 80, 83, 88]):
+        tone(out, "pulse25", m, k * 0.06, 0.25, 0.18, vib=0.15, gap=1.0, r=0.15)
+    for k in range(10):
+        tone(out, "tri", 88 + int(rng.integers(0, 12)), 0.3 + k * 0.05, 0.05, 0.08, gap=1.0)
+    tone(out, "square", 52, 0, 0.8, 0.08, gap=1.0, a=0.2, r=0.4)
+    return out
+
+
+def clima() -> np.ndarray:
+    """Wind going round with fluttering ticks."""
+    out = np.zeros(int(1.3 * SR))
+    n = int(1.2 * SR)
+    cut = 1500 + 1300 * np.sin(np.linspace(0, 4 * np.pi, n))
+    wind = lowpass_var(rng.standard_normal(n), cut)
+    wind -= lowpass(wind, 300)
+    add(out, 0.35 * wind * swell(n, 0.3), 0)
+    for _ in range(14):
+        tone(out, "tri", 84 + int(rng.integers(0, 10)), float(rng.uniform(0.1, 1.0)), 0.03, 0.08, gap=1.0)
+    return out
+
+
 def guardar(path: Path, x: np.ndarray, pico: float = 0.85) -> None:
     x = x / (np.max(np.abs(x)) + 1e-9) * pico
     with wave.open(str(path), "wb") as w:
@@ -323,6 +385,9 @@ SONIDOS = {
     "derrota": (derrota, 0.85),
     "fin-ronda": (fin_ronda, 0.7),
     "pase": (pase, 0.7),
+    "jugar-carta": (jugar_carta, 0.75),
+    "efecto": (efecto, 0.75),
+    "clima": (clima, 0.75),
 }
 
 

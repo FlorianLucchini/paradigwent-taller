@@ -72,6 +72,9 @@ siempre da el mismo resultado.
 | `derrota.wav` | Al perder la partida | 2,7 s |
 | `fin-ronda.wav` | Al terminar una ronda | 0,85 s |
 | `pase.wav` | Cuando un jugador pasa | 0,35 s |
+| `jugar-carta.wav` | Al jugar una carta | 0,3 s |
+| `efecto.wav` | Al jugar una carta de efecto | 1 s |
+| `clima.wav` | Al jugar una carta de clima | 1,3 s |
 
 La música empalma el final con el principio, así que en JavaFX alcanza con
 `mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE)`.

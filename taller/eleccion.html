@@ -129,6 +129,7 @@ function contar() {
   c.append(t);
   for (const f of Object.keys(NOMBRES)) {
     const del = CARTAS.filter(x => x.faccion === f);
+    if (!del.length) continue;
     c.append(el('span', null, `${NOMBRES[f]} ${del.filter(x => elecciones[x.id]).length}/${del.length}`));
   }
   $('medidor').style.width = `${(total / CARTAS.length) * 100}%`;

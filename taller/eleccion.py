@@ -2,7 +2,8 @@
 
     uv run python -m taller.eleccion mazo-1
 
-Writes pruebas/<lote>/eleccion.html with every image embedded. Published as a
+Writes pruebas/<lote>/eleccion.html with every image embedded; cards without
+candidates in the batch are left out. Published as a
 Claude artifact, the page stores the choices in its shared database; opened as a
 plain file, it shows them as JSON to paste into pruebas/<lote>/elegidas.json.
 """
@@ -37,6 +38,8 @@ def main() -> None:
     for c in cargar("cartas.json")["cartas"]:
         carpeta = lote / f"pixeladas-{a.lado}"
         rango = sorted(int(f.stem.rsplit("-", 1)[1]) for f in carpeta.glob(f"{c['id']}-*.png"))
+        if not rango:
+            continue
         datos.append(
             {
                 "id": c["id"],

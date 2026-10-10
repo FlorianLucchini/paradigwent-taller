@@ -109,7 +109,7 @@ def main() -> None:
         if isinstance(entrada, str):
             entrada = {"texto": entrada}
         negativo = ", ".join(filter(None, [prompts["negativo"], entrada.get("evitar")]))
-        plantilla = prompts["plantillas"]["escena" if carta["tipo"] == "efecto" else "criatura"]
+        plantilla = prompts["plantillas"]["escena" if carta["tipo"] == "EFECTO" else "criatura"]
         positivo = plantilla.format(
             sujeto=entrada["texto"],
             faccion=prompts["facciones"][carta["faccion"]],

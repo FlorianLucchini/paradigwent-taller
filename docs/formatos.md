@@ -6,14 +6,14 @@ Una entrada por carta, 30 por facción. El `id` es el nombre sin tildes en minú
 es también el nombre de su ilustración.
 
 ```json
-{ "id": "saxardent", "nombre": "Saxardent", "faccion": "DRACONIENS", "tipo": "criatura",
+{ "id": "saxardent", "nombre": "Saxardent", "faccion": "DRACONIENS", "tipo": "CRIATURA",
   "linea": "CUERPO_A_CUERPO", "fuerza": 10, "descripcion": "Golem de magma" }
 ```
 
 | Campo | Valores |
 |---|---|
 | `faccion` | `DRACONIENS`, `LOTHRIM`, `HOPLITAS` |
-| `tipo` | `criatura`, `efecto`, `clima` |
+| `tipo` | `CRIATURA`, `EFECTO`, `CLIMA` |
 | `linea` | `CUERPO_A_CUERPO`, `DISTANCIA`, `ASEDIO` (criaturas) |
 | `fuerza` | 1 a 10 (criaturas) |
 

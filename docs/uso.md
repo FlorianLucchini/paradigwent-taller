@@ -55,6 +55,18 @@ uv run python -m taller.promover mi-lote
 
 Copia cada opción elegida a `assets/ilustraciones/<id>.png`.
 
+## Tablero
+
+```bash
+uv run python -m taller.tablero
+```
+
+Dibuja `assets/tablero/campo.png`, el fondo de la pantalla de partida: un campo partido
+por un río, con una franja por línea de ataque en cada mitad. Las coordenadas de cada
+zona están en [formatos](formatos.md#tablero).
+
+En `pruebas/tablero/` están los fondos que no se usaron, con el script que los genera.
+
 ## Sonidos
 
 ```bash

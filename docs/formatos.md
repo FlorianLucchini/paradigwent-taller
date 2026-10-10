@@ -69,6 +69,7 @@ Los colores de cada facción. Las letras de `colores` son las que usan los mapas
 | `assets/dorsos/` | `dorso-<faccion>.png` | 50 × 70 |
 | `assets/piezas/` | `vida-<faccion>.png`, `linea-<linea>.png` | 12 × 12 |
 | `assets/piezas/` | `emblema-<faccion>.png` | 16 × 16 |
+| `assets/tablero/` | `campo.png` | 320 × 200 |
 | `assets/sonidos/` | `<evento>.wav` (JavaFX no reproduce OGG) | Mono, 22 050 Hz, 16 bits |
 
 Todo se guarda en su tamaño real. El juego lo agranda sin suavizado para que los píxeles
@@ -76,3 +77,33 @@ queden nítidos: `imageView.setSmooth(false)` en JavaFX.
 
 El marco de la carta (nombre, fuerza, línea, descripción y color de la facción) no es
 una imagen: lo dibuja el juego a partir de `cartas.json`.
+
+## Tablero
+
+`campo.png` se muestra agrandado ×4, a 1280 × 800. Las coordenadas de esta sección
+están en píxeles de esa pantalla.
+
+| Columna | Desde x | Hasta x | Para qué |
+|---|---|---|---|
+| Izquierda | 0 | 208 | Clima y botones |
+| Centro | 208 | 1136 | Manos y líneas de los dos jugadores |
+| Derecha | 1136 | 1280 | Mazo y descarte |
+
+En el centro, las franjas de las líneas van de x = 220 a x = 1124. Cada una tiene a la
+izquierda una placa con el ícono de la línea (x de 224 a 288) y a la derecha una placa
+vacía para el número de fuerza (x de 1052 a 1124). Las cartas entran entre las dos, de
+x = 288 a x = 1052.
+
+| Fila | Desde y | Hasta y | Alto |
+|---|---|---|---|
+| Mano del rival | 0 | 112 | 112 |
+| Asedio del rival | 112 | 188 | 76 |
+| Distancia del rival | 188 | 264 | 76 |
+| Cuerpo a cuerpo del rival | 264 | 340 | 76 |
+| Vidas y puntaje del rival | 340 | 384 | 44 |
+| Río | 384 | 416 | 32 |
+| Tus vidas y puntaje | 416 | 460 | 44 |
+| Tu cuerpo a cuerpo | 460 | 536 | 76 |
+| Tu distancia | 536 | 612 | 76 |
+| Tu asedio | 612 | 688 | 76 |
+| Tu mano | 688 | 800 | 112 |

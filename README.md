@@ -7,8 +7,19 @@ Programación (FIUBA): un Gwent simplificado en Java y JavaFX con tres facciones
 **Draconiens**, **Lothrim** y **Hoplitas**.
 
 Este repo no tiene lógica del juego. Tiene lo que el juego carga: las 90 cartas en JSON,
-las ilustraciones en pixel art, los dorsos, las piezas del tablero y (más adelante) los
-sonidos, junto con los scripts que los generan.
+las ilustraciones en pixel art, los dorsos, las piezas del tablero y los sonidos, junto
+con los scripts que los generan.
+
+## Las facciones
+
+| Facción | Quiénes son | Su poder | Color | Línea fuerte |
+|---|---|---|---|---|
+| **Draconiens** | Hombres dragón de Arx Infera, una ciudadela dentro de un volcán | El fuego del centro de la tierra | Rojo | Cuerpo a cuerpo |
+| **Lothrim** | Elfos del pueblo de la flor, guardianes del árbol Galadloth | La naturaleza | Verde | Distancia |
+| **Hoplitas** | Humanos de Siderópolis, la ciudad de hierro | El ingenio: máquinas, forja y bestias domadas | Marrón | Asedio |
+
+Cada facción tiene 30 cartas (23 criaturas comunes, 2 con habilidad, 2 de efecto y 3 de
+clima), con nombres en su propio idioma: latín y francés, sindarin y griego.
 
 ## Qué hay
 
@@ -42,21 +53,11 @@ ComfyUI, que se instala con `scripts/comfyui.sh instalar`. El paso a paso está 
 - [Herramientas](docs/herramientas.md): qué se instala, para qué sirve y qué licencias tiene.
 - [Formatos](docs/formatos.md): los archivos de `datos/` y cómo están guardados los assets.
 
-## Estado
+## Autor y licencia
 
-| Parte | Estado |
-|---|---|
-| Datos de las 90 cartas | Listos |
-| Dorsos, fichas de vida, íconos de línea, emblemas | Listos |
-| Ilustraciones | Generadas, en elección (`pruebas/mazo-1/`) |
-| Tablero | Pendiente |
-| Sonidos | Pendientes |
-
-## Autores y licencia
-
-Florian Lucchini y Matías Portela.
+Florian Lucchini.
 
 El código está bajo [licencia MIT](LICENSE). Las imágenes, los datos y los sonidos están
 bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es): se pueden usar
-citando a los autores. Las ilustraciones de las cartas están generadas con IA (Stable
+citando al autor. Las ilustraciones de las cartas están generadas con IA (Stable
 Diffusion).

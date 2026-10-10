@@ -1,42 +1,62 @@
 # Paradigwent · Taller
 
-Assets de **Paradigwent**, el TP1 de Paradigmas de la Programación (FIUBA): un Gwent
-simplificado en Java y JavaFX, con tres facciones (Draconiens, Lothrim y Hoplitas).
+![Dorsos y piezas del tablero](docs/img/muestra.png)
 
-Acá vive todo lo que **no es lógica del juego**: los datos de las 90 cartas, el pixel art,
-las piezas del tablero y los sonidos. El juego toma de este repo lo que necesita.
+Arte y datos de **Paradigwent**, el juego de cartas del TP1 de Paradigmas de la
+Programación (FIUBA): un Gwent simplificado en Java y JavaFX con tres facciones,
+**Draconiens**, **Lothrim** y **Hoplitas**.
+
+Este repo no tiene lógica del juego. Tiene lo que el juego carga: las 90 cartas en JSON,
+las ilustraciones en pixel art, los dorsos, las piezas del tablero y (más adelante) los
+sonidos, junto con los scripts que los generan.
 
 ## Qué hay
 
 | Carpeta | Contenido |
 |---|---|
 | `datos/` | Las cartas, las paletas de cada facción y los textos para generar ilustraciones |
-| `assets/` | Los archivos que usa el juego: ilustraciones, piezas del tablero, dorsos, sonidos |
-| `taller/` | Los scripts que generan esos archivos |
-| `pruebas/` | Lotes de ilustraciones generadas, para revisar antes de pasarlas a `assets/` |
+| `assets/` | Lo que usa el juego: ilustraciones, dorsos, piezas del tablero y sonidos |
+| `taller/` | Los scripts en Python que generan los assets |
+| `scripts/` | Instalación y arranque de ComfyUI |
+| `pruebas/` | Ilustraciones candidatas, para elegir antes de pasarlas a `assets/` |
+| `docs/` | Documentación |
 
-## Uso
+## Empezar
 
-Requiere [uv](https://docs.astral.sh/uv/).
+Hace falta [uv](https://docs.astral.sh/uv/), que instala Python y las dependencias.
 
 ```bash
-uv sync                                   # instala las dependencias
-uv run python -m taller.pintar            # dibuja las piezas del tablero en assets/piezas/
-uv run python -m taller.ilustrar sideron --lote prueba   # genera ilustraciones (necesita ComfyUI)
-uv run python -m taller.promover prueba   # pasa las elegidas a assets/ilustraciones/
+git clone https://github.com/FlorianLucchini/paradigwent-taller
+cd paradigwent-taller
+uv sync
+uv run python -m taller.pintar   # dibuja los dorsos y las piezas en assets/
 ```
+
+Generar ilustraciones necesita además una placa de video NVIDIA (con 4 GB alcanza) y
+ComfyUI, que se instala con `scripts/comfyui.sh instalar`. El paso a paso está en
+[docs/uso.md](docs/uso.md).
 
 ## Documentación
 
-- [Estructura](docs/estructura.md): qué va en cada carpeta y el formato de las cartas.
-- [Herramientas](docs/herramientas.md): con qué se genera cada cosa y cuánto cuesta.
+- [Uso](docs/uso.md): cómo generar cada cosa y cómo agregar o cambiar una carta.
+- [Herramientas](docs/herramientas.md): qué se instala, para qué sirve y qué licencias tiene.
+- [Formatos](docs/formatos.md): los archivos de `datos/` y cómo están guardados los assets.
+
+## Estado
+
+| Parte | Estado |
+|---|---|
+| Datos de las 90 cartas | Listos |
+| Dorsos, fichas de vida, íconos de línea, emblemas | Listos |
+| Ilustraciones | Generadas, en elección (`pruebas/mazo-1/`) |
+| Tablero | Pendiente |
+| Sonidos | Pendientes |
 
 ## Autores y licencia
 
 Florian Lucchini y Matías Portela.
 
-- El código está bajo [licencia MIT](LICENSE).
-- Las imágenes, los datos y los sonidos de `assets/` y `datos/` están bajo
-  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es): se pueden usar
-  citando a los autores. Las ilustraciones hechas con Stable Diffusion se marcan como
-  generadas con IA.
+El código está bajo [licencia MIT](LICENSE). Las imágenes, los datos y los sonidos están
+bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es): se pueden usar
+citando a los autores. Las ilustraciones de las cartas están generadas con IA (Stable
+Diffusion).

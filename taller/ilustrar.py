@@ -1,12 +1,12 @@
 """Generate illustration candidates with Stable Diffusion through ComfyUI.
 
-ComfyUI has to be running (see docs/herramientas.md). Example:
+ComfyUI has to be running (scripts/comfyui.sh levantar). Example:
 
-    uv run python -m taller.ilustrar saxardent thoron sideron --lote comparacion
+    uv run python -m taller.ilustrar saxardent thoron sideron --lote mi-lote
 
 For each card it saves N raw candidates and their pixelated versions under
-pruebas/<lote>/, then writes the review sheet. Candidates that already exist are
-not generated again, so an interrupted run can be resumed.
+pruebas/<lote>/. Candidates that already exist are not generated again, so an
+interrupted run can be resumed.
 """
 
 import argparse
@@ -20,7 +20,6 @@ import zlib
 
 from PIL import Image
 
-from taller import hoja
 from taller.datos import PRUEBAS, cargar, cartas, paletas
 from taller.pixelar import pixelar
 
@@ -127,8 +126,6 @@ def main() -> None:
                 print(f"{nombre} en {time.time() - inicio:.0f} s")
             for lado in a.lados:
                 pixelar(imagen, pals[carta["faccion"]], lado).save(PRUEBAS / a.lote / f"pixeladas-{lado}" / nombre)
-
-    hoja.escribir(a.lote, a.cartas, a.opciones, a.lados)
 
 
 if __name__ == "__main__":

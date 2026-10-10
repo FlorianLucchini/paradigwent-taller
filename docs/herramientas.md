@@ -1,83 +1,50 @@
 # Herramientas
 
-Todo es gratuito y corre en una computadora común.
+Todo es gratuito y corre en la computadora propia.
 
-| Herramienta | Para qué |
-|---|---|
-| [uv](https://docs.astral.sh/uv/) | Instala Python y las dependencias del proyecto |
-| [Pillow](https://python-pillow.org/) | Dibuja y procesa las imágenes |
-| [Ruff](https://docs.astral.sh/ruff/) | Formatea y revisa el código: `uv run ruff format` y `uv run ruff check` |
-| Stable Diffusion 1.5 | Genera imágenes a partir de un texto |
-| ComfyUI | El programa que ejecuta Stable Diffusion |
-| LoRA Pixel Art Redmond | Le enseña a Stable Diffusion el estilo pixel art |
+| Herramienta | Para qué | ¿Hace falta? |
+|---|---|---|
+| [uv](https://docs.astral.sh/uv/) | Instala Python (3.12 o más nuevo) y las dependencias del repo | Siempre |
+| [Pillow](https://python-pillow.org/) | Dibuja y procesa las imágenes | Siempre (la instala `uv sync`) |
+| [Ruff](https://docs.astral.sh/ruff/) | Formatea y revisa el código Python | Solo para tocar el código |
+| [ComfyUI](https://github.com/comfyanonymous/ComfyUI) | Ejecuta Stable Diffusion | Solo para generar ilustraciones |
 
-## Cómo se hace cada imagen
+## Stable Diffusion
 
-**Piezas del tablero, por código.** Cada pieza es un mapa de letras en `taller/sprites.py`,
-donde cada letra es un color de la paleta. `taller.pintar` las convierte en PNG.
+Es un modelo abierto que genera imágenes a partir de un texto. Corre en la placa de
+video propia, sin cuenta ni pago.
 
-**Ilustraciones de las cartas, con Stable Diffusion.** `taller.ilustrar` toma la
-descripción en inglés de cada carta (`datos/prompts.json`) y:
+- **Modelo:** Stable Diffusion 1.5, en su versión fp16 (2 GB). Es la versión que entra
+  en una placa de 4 GB.
+- **LoRA:** Pixel Art Redmond. Un LoRA es un archivo chico que se suma al modelo para
+  darle un estilo; este lo lleva al pixel art y se activa con la palabra `PixArFK`.
+- **ComfyUI** carga los dos y ofrece una API local, que es la que usa `taller.ilustrar`.
 
-1. Le pide a Stable Diffusion varias opciones de 512 × 512, ya en estilo pixel art y con
-   el escenario de su facción.
-2. Las achica a 64 × 64 (otros tamaños con `--lados 48 64`) y fuerza cada píxel a la
-   paleta de la facción, que es lo que hace que todas parezcan del mismo juego. Los colores
-   de `soloPiezas` (como el rosa de la flor Lothrim) quedan afuera.
-3. Arma `pruebas/<lote>/index.html` para comparar y elegir.
-
-Si se corta, al volver a correrlo sigue desde donde quedó. Para elegir, `taller.eleccion`
-arma una página con las 4 opciones de cada carta. Las elegidas se anotan en
-`pruebas/<lote>/elegidas.json` (`{"saxardent": 3, ...}`) y `taller.promover` las copia a
-`assets/ilustraciones/`.
-
-## Stable Diffusion, ComfyUI y LoRA
-
-- **Stable Diffusion** es un modelo abierto que genera imágenes a partir de un texto.
-  Corre en la placa de video propia: no hace falta cuenta ni pago. Usamos la versión 1.5
-  porque entra en una placa de 4 GB.
-- **ComfyUI** es la aplicación que lo ejecuta. Tiene una interfaz web para probar a mano
-  y una API, que es la que usa `taller.ilustrar`.
-- **Un LoRA** es un archivo chico que se suma al modelo para darle un estilo. El de pixel
-  art se activa con la palabra `PixArFK` en el texto.
+Necesita una placa NVIDIA con al menos 4 GB de memoria. Con una RTX 3050 Ti de
+notebook tarda unos 5 segundos por imagen.
 
 ### Instalación
 
 ```bash
-git clone https://github.com/comfyanonymous/ComfyUI ~/tools/ComfyUI
-cd ~/tools/ComfyUI
-uv venv && source .venv/bin/activate
-uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
-uv pip install -r requirements.txt
+scripts/comfyui.sh instalar
 ```
 
-Después se bajan dos archivos de Hugging Face:
+Clona ComfyUI en `~/tools/ComfyUI` (otra ruta con la variable `COMFYUI_DIR`), instala
+PyTorch con soporte CUDA y descarga el modelo y el LoRA de Hugging Face. Ocupa unos 11 GB.
 
-| Archivo | Va en | Origen |
-|---|---|---|
-| `v1-5-pruned-emaonly-fp16.safetensors` (2 GB) | `models/checkpoints/` | [Comfy-Org/stable-diffusion-v1-5-archive](https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive) |
-| `PixelArtRedmond15V.safetensors` | `models/loras/` | [artificialguybr/pixelartredmond-1-5v](https://huggingface.co/artificialguybr/pixelartredmond-1-5v-pixel-art-loras-for-sd-1-5) |
+## Por qué las ilustraciones se pixelan después
 
-### Uso
-
-```bash
-cd ~/tools/ComfyUI && source .venv/bin/activate && python main.py   # queda en http://127.0.0.1:8188
-```
-
-En otra terminal, desde este repo:
-
-```bash
-uv run python -m taller.ilustrar saxardent thoron sideron --lote comparacion
-```
+Stable Diffusion genera a 512 × 512 en estilo pixel art, pero sus "píxeles" no son
+parejos ni respetan una paleta. `taller.pixelar` reduce la imagen a 64 × 64 y fuerza
+cada píxel al color más cercano de la paleta de la facción. Eso es lo que hace que las
+90 cartas parezcan del mismo juego.
 
 ## Licencias
 
-- Stable Diffusion 1.5 (CreativeML OpenRAIL-M) permite usar las imágenes generadas.
-- El LoRA Pixel Art Redmond permite trabajos derivados y no pide crédito.
-- El enunciado del TP permite contenido generado con IA. Las ilustraciones de Stable
-  Diffusion se acreditan como tales en el README del juego.
+| Recurso | Licencia |
+|---|---|
+| Stable Diffusion 1.5 | CreativeML OpenRAIL-M: permite usar las imágenes generadas |
+| LoRA Pixel Art Redmond | Permite trabajos derivados, sin crédito obligatorio |
+| ComfyUI | GPL-3.0 (se usa como programa externo, no se distribuye acá) |
 
-## Sonidos
-
-Todavía no están. La idea es sintetizar los efectos por código (estilo 8 bits, como el
-pixel art) y guardarlos en WAV, porque JavaFX no reproduce OGG.
+El enunciado del TP permite contenido generado con IA, siempre que se acredite.

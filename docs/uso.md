@@ -61,9 +61,9 @@ Copia cada opción elegida a `assets/ilustraciones/<id>.png`.
 uv run python -m taller.sonar
 ```
 
-Sintetiza en `assets/sonidos/` la música de fondo y los efectos, en estilo 8 bits. No
-usa grabaciones: cada sonido sale de ondas cuadradas, triangulares y ruido, así que
-siempre da el mismo resultado.
+Sintetiza en `assets/sonidos/` la música de fondo y los efectos. No usa grabaciones:
+cada sonido sale de ondas y ruido generados por código, así que siempre da el mismo
+resultado.
 
 | Archivo | Cuándo suena | Duración |
 |---|---|---|
@@ -72,9 +72,9 @@ siempre da el mismo resultado.
 | `derrota.wav` | Al perder la partida | 2,7 s |
 | `fin-ronda.wav` | Al terminar una ronda | 0,85 s |
 | `pase.wav` | Cuando un jugador pasa | 0,35 s |
-| `jugar-carta.wav` | Al jugar una carta | 0,3 s |
-| `efecto.wav` | Al jugar una carta de efecto | 1 s |
-| `clima.wav` | Al jugar una carta de clima | 1,3 s |
+| `jugar-carta.wav` | Al jugar una carta: choque de espadas | 0,55 s |
+| `efecto.wav` | Al jugar una carta de efecto: cuenco | 1,1 s |
+| `clima.wav` | Al jugar una carta de clima: gota de agua | 0,35 s |
 
 La música empalma el final con el principio, así que en JavaFX alcanza con
 `mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE)`.

@@ -308,66 +308,62 @@ def pase() -> np.ndarray:
     return jingle(b, 0.35)
 
 
-def sweep(kind: str, f0: float, f1: float, dur: float, curve: float = 1.0) -> np.ndarray:
-    """Oscillator gliding exponentially from f0 to f1."""
+# Short sounds (card, weather, effect) draw from their own stream, in SONIDOS order
+rng_sfx = np.random.default_rng(21)
+
+
+def bandpass(x: np.ndarray, lo: float, hi: float) -> np.ndarray:
+    return lowpass(x, hi) - lowpass(x, lo)
+
+
+def clima() -> np.ndarray:
+    """A big, round water drop with a tiny splash tick."""
+    out = np.zeros(int(0.35 * SR))
+    dur = 0.3
     n = int(dur * SR)
-    f = f0 * (f1 / f0) ** (np.linspace(0, 1, n) ** curve)
-    ph = 2 * np.pi * np.cumsum(f) / SR
-    if kind == "square":
-        return np.sign(np.sin(ph)) * 0.5
-    return 2 / np.pi * np.arcsin(np.sin(ph))
-
-
-def lowpass_var(x: np.ndarray, cutoffs: np.ndarray) -> np.ndarray:
-    a = np.exp(-2 * np.pi * cutoffs / SR)
-    y = np.empty_like(x)
-    acc = 0.0
-    for i, v in enumerate(x):
-        acc = (1 - a[i]) * v + a[i] * acc
-        y[i] = acc
-    return y
-
-
-def swell(n: int, attack: float) -> np.ndarray:
-    e = np.ones(n)
-    na = int(n * attack)
-    e[:na] = np.linspace(0, 1, na)
-    e[na:] = np.linspace(1, 0, n - na) ** 1.5
-    return e
+    x = np.linspace(0, 1, n)
+    f = 500 * (1250 / 500) ** np.minimum(1, x * dur / 0.03) ** 0.4  # pitch rises in the first 30 ms
+    drop = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-x * dur * 28) * np.minimum(1, x * n / (0.002 * SR))
+    add(out, 0.6 * drop, 0)
+    tick = bandpass(rng_sfx.standard_normal(int(0.006 * SR)), 2000, 7000)
+    add(out, 0.15 * tick * np.linspace(1, 0, len(tick)), 0)
+    return out
 
 
 def jugar_carta() -> np.ndarray:
-    """Dry drum hit with a short falling bass blip."""
-    out = np.zeros(int(0.3 * SR))
-    add(out, 0.5 * drum(0.25, 75), 0)
-    s = sweep("square", 220, 110, 0.08)
-    add(out, 0.25 * s * env(len(s), 0.002, 0.03), 0)
-    add(out, 0.2 * noise_hit(0.05, 2500, 10), 0)
+    """Sword clash: dense inharmonic partials, an impact burst and a little grit."""
+    length, modes = 0.5, 24
+    n = int(length * SR)
+    t = np.arange(n) / SR
+    clang = np.zeros(n)
+    for f in np.exp(rng_sfx.uniform(np.log(1800), np.log(8500), modes)):
+        dec = rng_sfx.uniform(6, 30) * (f / 3000) ** 0.5
+        amp = rng_sfx.uniform(0.3, 1.0)
+        clang += amp * np.sin(2 * np.pi * f * t + rng_sfx.uniform(0, 6.28)) * np.exp(-t * dec)
+    clang /= modes**0.5
+    clang += np.sin(2 * np.pi * 640 * t) * np.exp(-t * 25) * 0.5  # lower ring of the blade
+    nb = int(0.03 * SR)
+    clang[:nb] += 1.5 * bandpass(rng_sfx.standard_normal(nb), 1500, 9000) * np.exp(-np.linspace(0, 6, nb))
+    out = np.zeros(int(0.55 * SR))
+    add(out, 0.5 * np.tanh(clang * 1.6), 0)
     return out
 
 
 def efecto() -> np.ndarray:
-    """Rising major arpeggio with sparkles."""
-    out = np.zeros(int(1.0 * SR))
-    for k, m in enumerate([64, 68, 71, 76, 80, 83, 88]):
-        tone(out, "pulse25", m, k * 0.06, 0.25, 0.18, vib=0.15, gap=1.0, r=0.15)
-    for k in range(10):
-        tone(out, "tri", 88 + int(rng.integers(0, 12)), 0.3 + k * 0.05, 0.05, 0.08, gap=1.0)
-    tone(out, "square", 52, 0, 0.8, 0.08, gap=1.0, a=0.2, r=0.4)
-    return out
+    """Singing bowl: one low triangle note beating slowly against a detuned copy."""
 
+    def voice(m, decay, detune=0.0):
+        s = osc("tri", hz(m) * (1 + detune), 1.05)
+        s *= np.exp(-np.linspace(0, decay, len(s)))
+        a = int(0.03 * SR)
+        s[:a] *= np.linspace(0, 1, a)
+        return s
 
-def clima() -> np.ndarray:
-    """Wind going round with fluttering ticks."""
-    out = np.zeros(int(1.3 * SR))
-    n = int(1.2 * SR)
-    cut = 1500 + 1300 * np.sin(np.linspace(0, 4 * np.pi, n))
-    wind = lowpass_var(rng.standard_normal(n), cut)
-    wind -= lowpass(wind, 300)
-    add(out, 0.35 * wind * swell(n, 0.3), 0)
-    for _ in range(14):
-        tone(out, "tri", 84 + int(rng.integers(0, 10)), float(rng.uniform(0.1, 1.0)), 0.03, 0.08, gap=1.0)
-    return out
+    out = np.zeros(int(1.1 * SR))
+    add(out, 0.15 * voice(64, 4), 0)
+    add(out, 0.12 * voice(64, 4, detune=0.006), 0)
+    add(out, 0.04 * voice(76, 6), 0)
+    return lowpass(out, 2500)
 
 
 def guardar(path: Path, x: np.ndarray, pico: float = 0.85) -> None:
@@ -385,9 +381,9 @@ SONIDOS = {
     "derrota": (derrota, 0.85),
     "fin-ronda": (fin_ronda, 0.7),
     "pase": (pase, 0.7),
-    "jugar-carta": (jugar_carta, 0.75),
-    "efecto": (efecto, 0.75),
-    "clima": (clima, 0.75),
+    "clima": (clima, 0.55),
+    "jugar-carta": (jugar_carta, 0.55),
+    "efecto": (efecto, 0.55),
 }
 
 

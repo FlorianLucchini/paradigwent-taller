@@ -69,7 +69,7 @@ Los colores de cada facción. Las letras de `colores` son las que usan los mapas
 | `assets/dorsos/` | `dorso-<faccion>.png` | 50 × 70 |
 | `assets/piezas/` | `vida-<faccion>.png`, `linea-<linea>.png` | 12 × 12 |
 | `assets/piezas/` | `emblema-<faccion>.png` | 16 × 16 |
-| `assets/sonidos/` | WAV (JavaFX no reproduce OGG) | — |
+| `assets/sonidos/` | `<evento>.wav` (JavaFX no reproduce OGG) | Mono, 22 050 Hz, 16 bits |
 
 Todo se guarda en su tamaño real. El juego lo agranda sin suavizado para que los píxeles
 queden nítidos: `imageView.setSmooth(false)` en JavaFX.

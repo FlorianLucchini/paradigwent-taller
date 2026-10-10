@@ -6,6 +6,7 @@ Todo es gratuito y corre en la computadora propia.
 |---|---|---|
 | [uv](https://docs.astral.sh/uv/) | Instala Python (3.12 o más nuevo) y las dependencias del repo | Siempre |
 | [Pillow](https://python-pillow.org/) | Dibuja y procesa las imágenes | Siempre (la instala `uv sync`) |
+| [NumPy](https://numpy.org/) | Sintetiza los sonidos | Siempre (la instala `uv sync`) |
 | [Ruff](https://docs.astral.sh/ruff/) | Formatea y revisa el código Python | Solo para tocar el código |
 | [ComfyUI](https://github.com/comfyanonymous/ComfyUI) | Ejecuta Stable Diffusion | Solo para generar ilustraciones |
 

@@ -29,7 +29,7 @@ clima), con nombres en su propio idioma: latín y francés, sindarin y griego.
 | `assets/` | Lo que usa el juego: ilustraciones, dorsos, piezas del tablero y sonidos |
 | `taller/` | Los scripts en Python que generan los assets |
 | `scripts/` | Instalación y arranque de ComfyUI |
-| `pruebas/` | Ilustraciones candidatas, para elegir antes de pasarlas a `assets/` |
+| `pruebas/` | Ilustraciones candidatas, para elegir antes de pasarlas a `assets/`, y sonidos descartados |
 | `docs/` | Documentación |
 
 ## Empezar
@@ -61,3 +61,9 @@ El código está bajo [licencia MIT](LICENSE). Las imágenes, los datos y los so
 bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es): se pueden usar
 citando al autor. Las ilustraciones de las cartas están generadas con IA (Stable
 Diffusion).
+
+La música de fondo y los sonidos de victoria, derrota y fin de ronda citan, pasados a
+8 bits, riffs de canciones de **Patricio Rey y sus Redonditos de Ricota** (Carlos Solari
+y Eduardo Beilinson): *El pibe de los astilleros*, *Ya nadie va a escuchar tu remera*,
+*Semen-up* y *Rock para los dientes*. Esos fragmentos son un homenaje, siguen siendo de
+sus autores y no quedan bajo CC BY 4.0.

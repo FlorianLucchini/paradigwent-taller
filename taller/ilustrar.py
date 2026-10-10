@@ -93,7 +93,7 @@ def main() -> None:
     args = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     args.add_argument("cartas", nargs="+", help="ids de cartas (ver datos/cartas.json)")
     args.add_argument("--lote", default="lote", help="carpeta dentro de pruebas/")
-    args.add_argument("--opciones", type=int, default=4)
+    args.add_argument("--opciones", type=int, default=8)
     args.add_argument("--lados", type=int, nargs="+", default=[64], help="tamaños finales en píxeles")
     args.add_argument("--servidor", default="http://127.0.0.1:8188")
     a = args.parse_args()
@@ -106,9 +106,13 @@ def main() -> None:
 
     for carta_id in a.cartas:
         carta = todas[carta_id]
+        entrada = prompts["cartas"][carta_id]
+        if isinstance(entrada, str):
+            entrada = {"texto": entrada}
+        negativo = ", ".join(filter(None, [prompts["negativo"], entrada.get("evitar")]))
         plantilla = prompts["plantillas"]["escena" if carta["tipo"] == "efecto" else "criatura"]
         positivo = plantilla.format(
-            sujeto=prompts["cartas"][carta_id],
+            sujeto=entrada["texto"],
             faccion=prompts["facciones"][carta["faccion"]],
             escenario=prompts["escenarios"][carta["faccion"]],
         )
@@ -118,7 +122,7 @@ def main() -> None:
                 imagen = Image.open(crudas / nombre)
             else:
                 inicio = time.time()
-                imagen = generar(a.servidor, positivo, prompts["negativo"], semilla=zlib.crc32(nombre.encode()))
+                imagen = generar(a.servidor, positivo, negativo, semilla=zlib.crc32(nombre.encode()))
                 imagen.save(crudas / nombre)
                 print(f"{nombre} en {time.time() - inicio:.0f} s")
             for lado in a.lados:

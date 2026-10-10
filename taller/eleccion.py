@@ -29,14 +29,14 @@ def uri(imagen: Image.Image, formato: str = "PNG", **opciones) -> str:
 def main() -> None:
     args = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     args.add_argument("lote", help="carpeta dentro de pruebas/")
-    args.add_argument("--opciones", type=int, default=4)
     args.add_argument("--lado", type=int, default=64)
     a = args.parse_args()
 
     lote = PRUEBAS / a.lote
     datos = []
     for c in cargar("cartas.json")["cartas"]:
-        rango = range(1, a.opciones + 1)
+        carpeta = lote / f"pixeladas-{a.lado}"
+        rango = sorted(int(f.stem.rsplit("-", 1)[1]) for f in carpeta.glob(f"{c['id']}-*.png"))
         datos.append(
             {
                 "id": c["id"],
@@ -46,7 +46,8 @@ def main() -> None:
                 "tipo": c["tipo"],
                 "linea": c.get("linea") or c.get("lineaAfectada"),
                 "fuerza": c.get("fuerza"),
-                "px": [uri(Image.open(lote / f"pixeladas-{a.lado}" / f"{c['id']}-{n}.png")) for n in rango],
+                "opciones": rango,
+                "px": [uri(Image.open(carpeta / f"{c['id']}-{n}.png")) for n in rango],
                 "raw": [
                     uri(
                         Image.open(lote / "crudas" / f"{c['id']}-{n}.png").convert("RGB").resize((160, 160)),

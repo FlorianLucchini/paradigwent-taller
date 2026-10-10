@@ -1,16 +1,16 @@
 {
   "plantillas": {
-    "criatura": "({sujeto}:1.2), {faccion}, background: {escenario}, fantasy card game illustration, single subject, full body, centered, pixel art, PixArFK",
+    "criatura": "({sujeto}:1.2), {faccion}, background: ({escenario}:0.6), dark muted background, subject lit by warm light, strong silhouette, fantasy card game illustration, single subject, full body, centered, pixel art, PixArFK",
     "escena": "{sujeto}, {faccion}, fantasy card game illustration, dramatic scene, pixel art, PixArFK"
   },
   "negativo": "blue sky, cyan, text, letters, watermark, signature, frame, border, card, multiple subjects, cropped, empty landscape, blurry, photo, realistic, 3d render",
   "facciones": {
-    "DRACONIENS": "dragonborn, volcanic fire, glowing magma, red and orange tones",
+    "DRACONIENS": "fire and ember accents, red and orange tones",
     "LOTHRIM": "elven, enchanted forest, green and brown tones",
     "HOPLITAS": "ancient greek, bronze age, rusty iron and leather, brown tones"
   },
   "escenarios": {
-    "DRACONIENS": "inside a volcano fortress with lava rivers and ash sky",
+    "DRACONIENS": "a dark basalt fortress hall",
     "LOTHRIM": "a giant ancient tree in a glowing forest",
     "HOPLITAS": "old rusty iron city walls under a dusty sky"
   },
@@ -18,35 +18,83 @@
     "saxardent": "a huge golem made of black volcanic rock with glowing lava cracks",
     "thoron": "a majestic eagle with spread wings perched on a tree branch",
     "sideron": "an ancient giant iron war colossus with rusty armor plates and a glowing furnace eye slit",
-    "cendre": "a dragonborn warrior choking under falling volcanic ash",
+    "cendre": {
+      "texto": "a dragon-headed humanoid warrior coughing, covered in grey falling ash",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "ignisium": "burning arrows falling from a red sky, close up",
-    "tremor": "a siege tower falling into a glowing lava crack in the ground",
-    "draconarius": "a dragonborn standard bearer holding a tall banner with a red dragon emblem",
-    "unguis": "a dragonborn warrior with huge iron claws crouched ready to strike, dark abyss glow",
-    "squamifer": "a lean dragonborn assassin with dark red scales and twin daggers",
-    "brasier": "a furious dragonborn berserker wreathed in roaring flames",
+    "tremor": "a broken siege tower lying on its side on cracked ground",
+    "draconarius": {
+      "texto": "a dragon-headed humanoid warrior holding a tall pole with a plain red cloth flag",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "unguis": {
+      "texto": "a dragon-headed humanoid warrior with long iron claws on his hands, crouching",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "squamifer": {
+      "texto": "a lean dragon-headed humanoid assassin with dark red scales and twin daggers",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "brasier": {
+      "texto": "a furious dragon-headed humanoid berserker surrounded by flames",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "cerbere": "a three-headed volcanic hound with molten lava fur guarding a fortress gate",
-    "obsidienne": "a dragonborn guard in black obsidian armor with a glassy obsidian shield",
+    "obsidienne": {
+      "texto": "a dragon-headed humanoid guard in black obsidian armor with a glassy shield",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "lavacanis": "a hound made of flowing lava with glowing eyes",
     "salamandra": "a large fire salamander lizard with burning skin",
-    "flammifer": "a dragonborn fire mage casting a fireball from his hands",
-    "arbalete": "a dragonborn crossbowman aiming a crossbow with a flaming bolt",
+    "flammifer": {
+      "texto": "a dragon-headed humanoid mage in robes casting a fireball from his hands",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "arbalete": {
+      "texto": "a dragon-headed humanoid crossbowman aiming a crossbow with a flaming bolt",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "scintilla": "a small living fire spirit, a floating ember spark with tiny glowing eyes",
     "vouivre": "a small winged dragon breathing fire from the sky",
-    "fronde": "a dragonborn slinger whirling a sling loaded with a volcanic rock",
-    "soufre": "a dragonborn alchemist throwing a bubbling yellow potion flask that bursts into flames",
-    "novicius": "a young dragonborn apprentice holding a tiny flame in his palms",
-    "eruptio": "a dragonborn summoner raising his arms as a volcano erupts behind him",
+    "fronde": {
+      "texto": "a dragon-headed humanoid slinger whirling a sling loaded with a rock",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "soufre": {
+      "texto": "a dragon-headed humanoid alchemist throwing a bubbling yellow potion flask",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "novicius": {
+      "texto": "a young dragon-headed humanoid apprentice holding a tiny flame in his palms",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "eruptio": {
+      "texto": "a dragon-headed humanoid summoner raising his arms, a small volcano erupting far behind him",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "onager": "a siege catapult of black iron hurling a molten rock",
     "belier": "a battering ram made of dark basalt stone on wheels",
     "tarasque": "a tarasque, a dragon with a huge burning turtle shell, smashing a stone wall",
     "fournaise": "a war furnace machine on wheels firing balls of magma, a stoker feeding it coal",
     "lapidator": "a stone giant throwing a volcanic boulder",
-    "fossor": "a dragonborn sapper digging a tunnel with a pickaxe by lantern light",
-    "flammecor": "the dragonborn lord, a massive crowned dragon man with a flaming heart glowing in his chest, roaring",
-    "cinerea": "a dragonborn priestess in grey ash robes holding an eternal flame",
+    "fossor": {
+      "texto": "a dragon-headed humanoid sapper digging a tunnel with a pickaxe by lantern light",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "flammecor": {
+      "texto": "a massive crowned dragon-headed humanoid lord in armor with a glowing fire heart in his chest",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
+    "cinerea": {
+      "texto": "a dragon-headed humanoid priestess in grey robes holding a small eternal flame",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "phenix": "a phoenix rising reborn from the ashes in a burst of flames",
-    "vocatio": "dragonborn warriors emerging from the volcanic smoke answering a war call",
+    "vocatio": {
+      "texto": "three dragon-headed humanoid warriors stepping out of grey smoke",
+      "evitar": "dragon wings, quadruped dragon, feral dragon, demon"
+    },
     "meril": "a warrior trapped by thorny rose vines",
     "lasgwae": "an archer covering his face from a whirlwind of flying leaves",
     "thond": "giant tree roots wrapping around a wooden catapult",
